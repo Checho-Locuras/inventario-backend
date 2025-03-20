@@ -9,7 +9,7 @@ namespace InventarioCCL.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ProductosController : ControllerBase
     {
         private readonly IProductoService _productoService;

@@ -27,7 +27,7 @@ namespace InventarioCCL.Core.Services
 
             // Calcular nueva cantidad
             int nuevaCantidad;
-            if (movimiento.Tipo == TipoMovimiento.Entrada)
+            if (movimiento.Tipo == 1)
             {
                 nuevaCantidad = producto.Cantidad + movimiento.Cantidad;
             }

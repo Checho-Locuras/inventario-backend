@@ -6,6 +6,6 @@ namespace InventarioCCL.Domain.Dtos
     {
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
-        public TipoMovimiento Tipo { get; set; }
+        public int Tipo { get; set; }
     }
 }
