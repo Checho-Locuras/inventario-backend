@@ -13,6 +13,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Añade esto en la sección de servicios
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()
+              .AllowAnyMethod(); ;
+        });
+});
+
+
 // Configurar DbContext con PostgreSQL
 builder.Services.AddDbContext<CCLContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -42,6 +57,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseCors("AllowAngularApp");
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
